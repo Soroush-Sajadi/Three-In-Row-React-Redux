@@ -1,10 +1,15 @@
 import React from 'react';
+import Game from './Components/Game'
+import { Provider } from 'react-redux'
+import store from './Redux/store'
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      Boiler plate
+      <Provider store={store}>
+        <Game />
+      </Provider>
     </div>
   );
 }
