@@ -1,0 +1,33 @@
+import {FETCH_DATA_REQUEST, FETCH_DATA_SUCCESS, FETCH_DATA_FAILURE} from './type';
+
+const initialoState = {
+    loading: false,
+    data: [],
+    error: ''
+}
+
+const reducer = (state = initialoState, action) => {
+    switch(action.type) {
+        case FETCH_DATA_REQUEST :
+            return {
+                ...state,
+                loading: true
+            }
+        case FETCH_DATA_SUCCESS :
+            return {
+                loading: false,
+                data: action.patload,
+                error: ''
+            }
+        case FETCH_DATA_FAILURE :
+            return {
+                loading: false,
+                data: [],
+                error: action.payload
+            }
+        default :
+            return state
+    }
+}
+
+export default reducer;
