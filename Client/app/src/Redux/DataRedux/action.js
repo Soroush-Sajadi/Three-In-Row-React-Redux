@@ -1,21 +1,27 @@
-import {FETCH_DATA_REQUEST, FETCH_DATA_SUCCESS, FETCH_DATA_FAILURE} from './type';
+import {
+    FETCH_DATA_FAILURE,
+    FETCH_DATA_REQUEST,
+    FETCH_DATA_SUCCESS
+} from './type'
 import axios from 'axios';
 
-export const fetchDataRequest = () => {
+export const fetchUserRequest = () => {
     return {
-        type: FETCH_DATA_REQUEST
+        type: FETCH_DATA_REQUEST,
     }
 }
 
-const fetchDataSuccess = data => {
+const fetchUserSuccess = data => {
     return {
         type: FETCH_DATA_SUCCESS,
         payload: data
+
     }
 }
 
-const fetchDataFailure = error => {
+const fetchUserFailure = error => {
     return {
+              
         type: FETCH_DATA_FAILURE,
         payload: error
     }
@@ -23,15 +29,15 @@ const fetchDataFailure = error => {
 
 export const fetchData = (url) => {
     return (dispatch) => {
-        dispatch(fetchDataRequest)
+        dispatch(fetchUserRequest)
         axios.get(url)
             .then(res => {
                 const data = res.data
-                dispatch(fetchDataSuccess(data))
+                dispatch(fetchUserSuccess(data))
             })
             .catch(error => {
-                const errMsg = error.message;
-                dispatch(fetchDataFailure(errMsg))
+                const errMsg = error.message
+                dispatch(fetchUserFailure(errMsg))
             })
     }
 }

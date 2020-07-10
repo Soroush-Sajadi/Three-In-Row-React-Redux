@@ -1,22 +1,22 @@
-import {FETCH_DATA_REQUEST, FETCH_DATA_SUCCESS, FETCH_DATA_FAILURE} from './type';
+import { FETCH_DATA_REQUEST, FETCH_DATA_SUCCESS, FETCH_DATA_FAILURE} from "./type"
 
-const initialoState = {
+const initialState = {
     loading: false,
     data: [],
     error: ''
 }
 
-const reducer = (state = initialoState, action) => {
-    switch(action.type) {
+const reducer = (state = initialState, action) => {
+    switch (action.type) {
         case FETCH_DATA_REQUEST :
-            return {
-                ...state,
-                loading: true
-            }
+        return {
+            ...state,
+            loading: true
+        }
         case FETCH_DATA_SUCCESS :
             return {
                 loading: false,
-                data: action.patload,
+                data: action.payload,
                 error: ''
             }
         case FETCH_DATA_FAILURE :
@@ -25,8 +25,7 @@ const reducer = (state = initialoState, action) => {
                 data: [],
                 error: action.payload
             }
-        default :
-            return state
+        default : return state
     }
 }
 
